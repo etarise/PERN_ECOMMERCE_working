@@ -21,6 +21,7 @@ function App() {
             <Route path="/products" element={<Dashboard />} />
             <Route path="/register" element={<Register />} />
             <Route path="/productdetail/" element={<Details />} />
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </div>
       </div>

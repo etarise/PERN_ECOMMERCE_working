@@ -52,7 +52,7 @@ function ProductList() {
                     className="btn btn btn-primary"
                     onClick={() => setShowModal(true)}
                   >
-                    <a href="/productdetail">View</a>
+                    View
                   </button>
                 </div>
               </div>{" "}
