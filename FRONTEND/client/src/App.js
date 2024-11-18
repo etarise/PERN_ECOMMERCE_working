@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Home from "./components/Home";
 //import Login from "./components/Login";
 import Register from "./components/Register";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import NoMatch from "./components/NoMatch";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
@@ -18,9 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/products" element={<Dashboard />} />
+            {/* <Route path="/products" element={<Dashboard />} /> */}
             <Route path="/register" element={<Register />} />
-            <Route path="/productdetail/" element={<Details />} />
+            <Route path="/product-details/:id" element={<Details />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </div>

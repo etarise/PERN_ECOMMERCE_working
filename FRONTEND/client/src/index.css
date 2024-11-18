@@ -111,7 +111,6 @@ ul li a.active {
   flex-wrap: wrap;
   /* border: 3px solid black; */
   row-gap: 2px;
-  cursor: pointer;
 }
 
 .imageSection {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ProductDetails from "./ProductDetails";
+
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   // const navigate = useNavigate();
   useEffect(() => {
     const getProductdata = async () => {
@@ -15,6 +16,11 @@ function ProductList() {
     };
     getProductdata();
   }, []);
+
+  // function handleClick() {
+  //   setShowModal(!showModal);
+  // }
+
   return (
     <div className="cardContainer">
       {productData.map(function (product) {
@@ -47,23 +53,21 @@ function ProductList() {
                     </span>
                   </div>
                 </div>
-                <div class="card-footer bg-transparent border-success">
-                  <button
+                <div className="card-footer bg-transparent border-success">
+                  <Link to={`products/${product.productid}`}>
+                    <button>
+                      <h6>View Link </h6>
+                    </button>
+                  </Link>
+
+                  {/* <button
                     className="btn btn btn-primary"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => handleClick()}
                   >
                     View
-                  </button>
+                  </button> */}
                 </div>
-              </div>{" "}
-              {showModal && (
-                <ProductDetails
-                  id={product.productid}
-                  product={productData.filter(
-                    (produc) => product === product.productid
-                  )}
-                />
-              )}
+              </div>
             </div>
           </div>
         );
