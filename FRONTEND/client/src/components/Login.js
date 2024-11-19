@@ -30,7 +30,7 @@ function Login() {
         .then((data) => {
           if (data.Status === "Success") {
             // alert(data.Status + " yes aya");
-            navigate("/Dashboard");
+            navigate("/products");
           } else {
             //  alert(data.Status + " no aya");
           }

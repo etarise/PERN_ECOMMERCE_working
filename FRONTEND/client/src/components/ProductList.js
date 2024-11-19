@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-
-import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
   // const [showModal, setShowModal] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const getProductdata = async () => {
       const reqdata = await fetch("http://localhost:5000/api/v1/products/");
@@ -17,9 +16,10 @@ function ProductList() {
     getProductdata();
   }, []);
 
-  // function handleClick() {
-  //   setShowModal(!showModal);
-  // }
+  function handleClick(id) {
+    // navigate("/product-details/:id");
+    navigate(`/product-details/:${id}`);
+  }
 
   return (
     <div className="cardContainer">
@@ -54,18 +54,12 @@ function ProductList() {
                   </div>
                 </div>
                 <div className="card-footer bg-transparent border-success">
-                  <Link to={`products/${product.productid}`}>
-                    <button>
-                      <h6>View Link </h6>
-                    </button>
-                  </Link>
-
-                  {/* <button
+                  <button
                     className="btn btn btn-primary"
-                    onClick={() => handleClick()}
+                    onClick={() => handleClick(product.productid)}
                   >
                     View
-                  </button> */}
+                  </button>
                 </div>
               </div>
             </div>

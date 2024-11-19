@@ -79,7 +79,7 @@ router.get(`/:id`, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await pool.query(
-      "select * from  product where product_id = $1",
+      "select * from  products where productid = $1",
       [id]
     );
     res.json(product.rows[0]);
@@ -154,7 +154,7 @@ router.get(`/:id`, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await pool.query(
-      "select * from  product where product_id = $1",
+      "select * from  products where productid = $1",
       [id]
     );
     res.json(product.rows[0]);

@@ -17,8 +17,8 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            {/* <Route path="/products" element={<Dashboard />} /> */}
+            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+            <Route path="/products" element={<Dashboard />} />
             <Route path="/register" element={<Register />} />
             <Route path="/product-details/:id" element={<Details />} />
             <Route path="*" element={<NoMatch />} />

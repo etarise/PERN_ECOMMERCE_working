@@ -1,14 +1,20 @@
 import { React, useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 
-function ProductDetails({ id }) {
+function ProductDetails() {
   const [product, setProduct] = useState({});
   //   const params = useParams();
 
   useEffect(() => {
+    console.log("in details");
+    const id = window.location.pathname.split(":");
+
+    console.log(id[1]);
     const getProduct = async () => {
-      console.log("in details");
-      const reqdata = await fetch(`http://localhost:5000/api/v1/products/${8}`);
+      const reqdata = await fetch(
+        `http://localhost:5000/api/v1/products/${id[1]}`
+      );
+      // const reqdata = await fetch("http://localhost:5000/api/v1/products/");
       const data = await reqdata.json();
       console.log(data);
       setProduct(data);
