@@ -5,30 +5,54 @@ function ProductDetails() {
   const [product, setProduct] = useState({});
   //   const params = useParams();
 
-  useEffect(() => {
-    console.log("in details");
-    const id = window.location.pathname.split(":");
+  const getProduct = async (id) => {
+    const reqdata = await fetch(`http://localhost:5000/api/v1/products/${id}`);
+    const data = await reqdata.json();
+    console.log(data);
+    setProduct(data);
+  };
 
+  useEffect(() => {
+    const id = window.location.pathname.split(":");
     console.log(id[1]);
-    const getProduct = async () => {
-      const reqdata = await fetch(
-        `http://localhost:5000/api/v1/products/${id[1]}`
-      );
-      // const reqdata = await fetch("http://localhost:5000/api/v1/products/");
-      const data = await reqdata.json();
-      console.log(data);
-      setProduct(data);
-    };
-    getProduct();
-  });
+    getProduct(id[1]);
+  }, []);
 
   return (
-    <div>
-      <h1>Product Information</h1>
-      <h1>{product.productid}</h1>
-      <h1>{product.productname}</h1>
-      <p> </p>
-    </div>
+    <>
+      <div id="productpage">
+        <h2 id="productHeading">Product Details</h2>
+        <div className="card mb-3">
+          <section className="imageSection">
+            <img
+              className="img-fluid"
+              src="http://localhost:5000/public/uploads/computerimage.jpg-1725812504102.jpeg"
+              alt="logo"
+            />
+          </section>
+          <div className="card-body">
+            <h5 className="card-title">{product.productname}</h5>
+            <p className="card-text">{product.richdescription}</p>
+            <p className="card-text">
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </p>
+            <p>
+              <div className="d-flex justify-content-between total font-weight-bold mt-4">
+                <span>
+                  <h5>Total Price </h5>
+                </span>
+                <span>
+                  <h5>{product.price}</h5>{" "}
+                </span>
+              </div>
+            </p>
+            <div className="card-footer bg-transparent border-success">
+              <button className="btn btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

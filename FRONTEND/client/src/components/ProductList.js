@@ -25,13 +25,14 @@ function ProductList() {
     <div className="cardContainer">
       {productData.map(function (product) {
         return (
-          <div className="col-md-4 mt-1 " key={product.productid}>
+          <div className="col-md-4 mt-1" key={product.productid}>
             <div>
               <div className="card border-primary mb-3 m-4">
-                <div className="card-body">
-                  <h5 className="card-title text-primary">
-                    {product.productname}
-                  </h5>
+                <div
+                  className="card-body"
+                  onClick={() => handleClick(product.productid)}
+                >
+                  <h5 className="card-title">{product.productname}</h5>
                   <section className="imageSection">
                     <img
                       className="img-fluid"
@@ -54,12 +55,7 @@ function ProductList() {
                   </div>
                 </div>
                 <div className="card-footer bg-transparent border-success">
-                  <button
-                    className="btn btn btn-primary"
-                    onClick={() => handleClick(product.productid)}
-                  >
-                    View
-                  </button>
+                  <button className="btn btn btn-primary">Add to Cart</button>
                 </div>
               </div>
             </div>

@@ -45,7 +45,7 @@ function Login() {
   };
   return (
     <Fragment>
-      <div class="col d-flex justify-content-center">
+      <div className="col d-flex justify-content-center">
         <div className="card w-50   mt-5  ">
           <div className="card-header text-center">
             Log in to Rue Bales E-Shop
