@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const navigate = useNavigate();
 
@@ -24,9 +24,19 @@ function ProductList() {
   }
 
   const handleClickAddTocart = (product) => {
-    //cart.push(product);
-    setCart([...cart, product]);
-    console.log(cart);
+    const exist = cartItems.find((x) => x.id === product.productid);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.productid ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
+    // cart.push(product);
+    //setCartItems([...cartItems, product,]);
+    console.log(cartItems);
   };
   return (
     <div className="cardContainer">
