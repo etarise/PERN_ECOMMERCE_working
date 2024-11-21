@@ -9,6 +9,7 @@ import NoMatch from "./components/NoMatch";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Details from "./components/ProductDetails";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/products" element={<Dashboard />} />
             <Route path="/register" element={<Register />} />
             <Route path="/product-details/:id" element={<Details />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </div>

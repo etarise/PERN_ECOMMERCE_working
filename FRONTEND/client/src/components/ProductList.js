@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function ProductList() {
   const [productData, setProductData] = useState([]);
-  // const [showModal, setShowModal] = useState(false);
+  const [cart, setCart] = useState([]);
+
   const navigate = useNavigate();
+
   useEffect(() => {
     const getProductdata = async () => {
       const reqdata = await fetch("http://localhost:5000/api/v1/products/");
@@ -21,6 +23,11 @@ function ProductList() {
     navigate(`/product-details/:${id}`);
   }
 
+  const handleClickAddTocart = (product) => {
+    //cart.push(product);
+    setCart([...cart, product]);
+    console.log(cart);
+  };
   return (
     <div className="cardContainer">
       {productData.map(function (product) {
@@ -41,10 +48,6 @@ function ProductList() {
                     />
                   </section>
 
-                  <p className="card-text">
-                    JavaScript is a versatile programming language used for web
-                    development.
-                  </p>
                   <div className="d-flex justify-content-between total font-weight-bold mt-4">
                     <span>
                       <h5>Total Price </h5>
@@ -55,7 +58,12 @@ function ProductList() {
                   </div>
                 </div>
                 <div className="card-footer bg-transparent border-success">
-                  <button className="btn btn btn-primary">Add to Cart</button>
+                  <button
+                    className="btn btn btn-primary"
+                    onClick={() => handleClickAddTocart(product)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
