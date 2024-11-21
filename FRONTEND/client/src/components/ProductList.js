@@ -24,18 +24,18 @@ function ProductList() {
   }
 
   const handleClickAddTocart = (product) => {
-    const exist = cartItems.find((x) => x.id === product.productid);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.productid ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
-    }
+    // const exist = cartItems.find((x) => x.id === product.productid);
+    // if (exist) {
+    //   setCartItems(
+    //     cartItems.map((x) =>
+    //       x.id === product.productid ? { ...exist, qty: exist.qty + 1 } : x
+    //     )
+    //   );
+    // } else {
+    //   setCartItems([...cartItems, { ...product, qty: 1 }]);
+    // }
     // cart.push(product);
-    //setCartItems([...cartItems, product,]);
+    setCartItems([...cartItems, product]);
     console.log(cartItems);
   };
   return (
