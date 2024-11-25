@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-function ProductList() {
+function ProductList({ addToCart }) {
   const [productData, setProductData] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const getProductdata = async () => {
@@ -20,24 +19,9 @@ function ProductList() {
 
   function handleClick(id) {
     // navigate("/product-details/:id");
-    navigate(`/product-details/:${id}`);
+    // navigate(`/product-details/:${id}`);
   }
 
-  const handleClickAddTocart = (product) => {
-    // const exist = cartItems.find((x) => x.id === product.productid);
-    // if (exist) {
-    //   setCartItems(
-    //     cartItems.map((x) =>
-    //       x.id === product.productid ? { ...exist, qty: exist.qty + 1 } : x
-    //     )
-    //   );
-    // } else {
-    //   setCartItems([...cartItems, { ...product, qty: 1 }]);
-    // }
-    // cart.push(product);
-    setCartItems([...cartItems, product]);
-    console.log(cartItems);
-  };
   return (
     <div className="cardContainer">
       {productData.map(function (product) {
@@ -70,7 +54,7 @@ function ProductList() {
                 <div className="card-footer bg-transparent border-success">
                   <button
                     className="btn btn btn-primary"
-                    onClick={() => handleClickAddTocart(product)}
+                    onClick={() => addToCart(product)}
                   >
                     Add to Cart
                   </button>

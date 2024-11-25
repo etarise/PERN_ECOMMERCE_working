@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus, faUser } from "@fortawesome/fontawesome-free-solid";
 // import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ cartLength }) => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -26,7 +26,7 @@ const Navbar = () => {
           </h1>
           <i className="fas fa-shopping-cart"></i>
 
-          <span className="cart-count">0</span>
+          <span className="cart-count">{cartLength}</span>
         </a>
         <a href="/account" className="user-icon">
           <i className="fas fa-user"></i>
